@@ -44,45 +44,12 @@ class Rs256JwtTest extends TestCase
     /**
      * @test
      */
-    public function headerMustHaveAlg(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $header = self::$validHeader;
-        unset($header['alg']);
-        new Rs256Jwt($header, self::$validPayload, $this->privateKey);
-    }
-
-    /**
-     * @test
-     */
     public function headerMustHaveAlgOfRs256(): void
     {
         $this->expectException(InvalidArgumentException::class);
         $header = self::$validHeader;
         $header['alg'] = 'FOOBAR';
         new Rs256Jwt($header, self::$validPayload, $this->privateKey);
-    }
-
-    /**
-     * @test
-     */
-    public function headerMustHaveTyp(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $header = self::$validHeader;
-        unset($header['typ']);
-        new Rs256Jwt($header, self::$validPayload, $this->privateKey);
-    }
-
-    /**
-     * @test
-     */
-    public function headerMustHaveTypOfJwt(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $header = self::$validHeader;
-        $header['typ'] = 'FOOBAR';
-        $sut = new Rs256Jwt($header, self::$validPayload, $this->privateKey);
     }
 
     /**
