@@ -1,0 +1,8 @@
+{
+  "src/PhpSimpleJwt/*.php"    : {
+    "alternate" : "tests/PhpSimpleJwt/{}Test.php"
+  },
+  "tests/PhpSimpleJwt/*Test.php"  : {
+    "alternate" : "src/PhpSimpleJwt/{}.php"
+  }
+}

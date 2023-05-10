@@ -1,0 +1,16 @@
+{
+    "autoload": {
+        "psr-4": {
+          "PhpSimpleJwt\\": [ "src/PhpSimpleJwt", "tests/PhpSimpleJwt" ]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.1"
+    },
+    "scripts": {
+        "qa": [
+            "@phpunit"
+        ],
+        "phpunit": "phpunit --colors"
+    }
+}
