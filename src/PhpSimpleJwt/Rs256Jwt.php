@@ -14,7 +14,6 @@ class Rs256Jwt extends AbstractJwt
     public function __construct(array $header, array $payload, private string $privateKey)
     {
         parent::__construct($header, $payload);
-        $this->validate();
     }
 
     protected function validate(): void
