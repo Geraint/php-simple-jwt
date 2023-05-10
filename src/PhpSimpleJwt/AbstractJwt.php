@@ -38,5 +38,20 @@ abstract class AbstractJwt
         }
     }
 
-    abstract function getSignedToken(): string;
+    public function getSignedToken(): string
+    {
+        $headerJson = json_encode($this->header, JSON_THROW_ON_ERROR);
+        $headerEncoded = $this->base64UrlEncode($headerJson);
+        $payloadJson = json_encode($this->payload, JSON_THROW_ON_ERROR);
+        $payloadEncoded = $this->base64UrlEncode($payloadJson);
+        $data = "{$headerEncoded}.{$payloadEncoded}";
+        return "{$data}.{$this->getSignature($data)}";
+    }
+
+    protected function base64UrlEncode(string $data): string
+    {
+        return str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($data));
+    }
+
+    abstract protected function getSignature(string $data): string;
 }

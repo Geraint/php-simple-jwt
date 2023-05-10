@@ -49,12 +49,7 @@ class Rs256Jwt extends AbstractJwt
         return "{$data}.{$this->getSignature($data)}";
     }
 
-    private function base64UrlEncode(string $data): string
-    {
-        return str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($data));
-    }
-
-    private function getSignature(string $data): string
+    protected function getSignature(string $data): string
     {
         $privateKey = openssl_pkey_get_private($this->privateKey);
         $result = openssl_sign($data, $signature, $privateKey, OPENSSL_ALGO_SHA256);
