@@ -1,9 +1,15 @@
 {
+    "name": "geraint/php-simple-jwt",
+    "description": "A simple JWT generator",
+    "license": "GPL-3.0-only",
     "autoload": {
         "psr-4": {
           "PhpSimpleJwt\\": [ "src/PhpSimpleJwt", "tests/PhpSimpleJwt" ]
         }
     },
+	"require" : {
+        "php": ">=8.1"
+	},
     "require-dev": {
         "phpunit/phpunit": "^10.1"
     },
