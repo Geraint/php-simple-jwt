@@ -14,6 +14,12 @@ A very simple implementation of the RS256 algorithm for signing JWT's.
 
 It would be trivial to add support for more algorithms.
 
+## Installation
+
+```sh
+composer require geraint/php-simple-jwt:dev-main
+```
+
 ## Usage
 
 The example script in the `/bin` directory looks like this:
