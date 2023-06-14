@@ -38,16 +38,6 @@ class Rs256Jwt extends AbstractJwt
         }
     }
 
-    public function getSignedToken(): string
-    {
-        $headerJson = json_encode($this->header, JSON_THROW_ON_ERROR);
-        $headerEncoded = $this->base64UrlEncode($headerJson);
-        $payloadJson = json_encode($this->payload, JSON_THROW_ON_ERROR);
-        $payloadEncoded = $this->base64UrlEncode($payloadJson);
-        $data = "{$headerEncoded}.{$payloadEncoded}";
-        return "{$data}.{$this->getSignature($data)}";
-    }
-
     protected function getSignature(string $data): string
     {
         $privateKey = openssl_pkey_get_private($this->privateKey);
